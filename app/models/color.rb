@@ -1,3 +1,3 @@
 class Color < ApplicationRecord
-  validates :color, presence: true
+  validates :name, presence: true
 end
