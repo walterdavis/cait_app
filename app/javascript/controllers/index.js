@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import CustomController from "./custom_controller"
+application.register("custom", CustomController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import HideDependentController from "./hide_dependent_controller"
+application.register("hide-dependent", HideDependentController)
