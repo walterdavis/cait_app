@@ -1,0 +1,4 @@
+<p><%= @order.updated_at %></p>
+<%= render partial: 'person', object: @order.person %>
+<p><%= @order.description %></p>
+<%= tag.p "Custom text: #{@order.custom_text}" if @order.custom_text? %>

@@ -1,0 +1,12 @@
+<%= bootstrap_form_with model: @order do |f| %>
+<%= f.fields_for :person do |pf| %>
+<%= pf.text_field :name %>
+<%= pf.email_field :email %>
+<%= pf.check_box :pickup, data: { controller: 'hide-dependent', action: 'hide-dependent#visibility', 'hide-dependent-target-value': '.address-box', 'hide-dependent-condition-value': ':checked' } %>
+<%= pf.text_area :address, rows: 5, wrapper_class: 'address-box' %>
+<%- end -%>
+<%= f.collection_select :color_id, Color.order(:position).all, :id, :name, include_blank: true %>
+<%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { include_blank: true }, data: { controller: 'custom', action: 'custom#customize' } %>
+<div id="custom_product_custom_text_wrapper"></div>
+<%= f.primary %>
+<%- end -%>
