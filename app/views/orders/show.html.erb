@@ -1,4 +1,3 @@
-<p><%= @order.updated_at %></p>
+<p><%= @order.updated_at.to_fs(:long) %></p>
 <%= render partial: 'person', object: @order.person %>
-<p><%= @order.description %></p>
-<%= tag.p "Custom text: #{@order.custom_text}" if @order.custom_text? %>
+<%= render @order.custom_products %>

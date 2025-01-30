@@ -9,5 +9,5 @@ one:
 two:
   name: MyString
   email: MyString
-  pickup: false
-  address: MyString
+  pickup: true
+  address: nil

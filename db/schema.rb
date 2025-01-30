@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
   end
 
   create_table "custom_products", force: :cascade do |t|
-    t.integer "person_id", null: false
+    t.integer "order_id", null: false
     t.integer "color_id", null: false
     t.integer "shape_id", null: false
     t.integer "quantity", default: 1, null: false
@@ -27,8 +27,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["color_id"], name: "index_custom_products_on_color_id"
-    t.index ["person_id"], name: "index_custom_products_on_person_id"
+    t.index ["order_id"], name: "index_custom_products_on_order_id"
     t.index ["shape_id"], name: "index_custom_products_on_shape_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_orders_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -49,6 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
   end
 
   add_foreign_key "custom_products", "colors"
-  add_foreign_key "custom_products", "people"
+  add_foreign_key "custom_products", "orders"
   add_foreign_key "custom_products", "shapes"
+  add_foreign_key "orders", "people"
 end
