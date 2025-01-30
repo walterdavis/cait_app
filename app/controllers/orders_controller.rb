@@ -1,14 +1,14 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit destroy update]
-  before_action :authenticate_admin, only: %i[edit update destroy index]
+  before_action :authenticate_admin!, only: %i[edit update destroy index]
 
   def new
-    @order = CustomProduct.new
+    @order = Order.new
     @order.build_person
   end
 
   def create
-    @order = CustomProduct.new order_params
+    @order = Order.new order_params
     if @order.save
       redirect_to @order
     else
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = CustomProduct.all
+    @orders = Order.all
   end
 
   def show
@@ -42,18 +42,12 @@ class OrdersController < ApplicationController
   private
 
   def set_order
-    @order = CustomProduct.find params[:id]
+    @order = Order.find params[:id]
   end
 
   def order_params
-    params.require(:custom_product)
-          .permit(:color_id, :shape_id, :custom_text,
-                  person_attributes: [:name, :email, :address, :pickup])
-  end
-
-  def authenticate_admin
-    authenticate_or_request_with_http_basic do |username, password|
-      username == 'mudder' && password == 'bill is my uncle'
-    end
+    params.require(:order)
+          .permit(custom_products_attributes: [ :id, :color_id, :shape_id, :custom_text, :_destroy ],
+                  person_attributes: [ :name, :email, :address, :pickup ])
   end
 end
