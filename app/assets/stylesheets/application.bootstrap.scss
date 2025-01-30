@@ -4,5 +4,39 @@
 .brand-logo {
   width: 5rem;
   height: auto;
-  margin-right: 1em;
+  margin-right: 1rem;
+}
+
+.navbar-brand {
+  font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
+  font-weight: 500;
+  font-size: 180%;
+  margin-right: 2rem;
+}
+
+h1, h2 {
+  font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
+}
+
+h2 {
+  font-size: 1.5rem;
+  padding-bottom: .3rem;
+  @extend .border-bottom;
+}
+
+nav.bg-body-tertiary {
+  background-color: #C0E4DC !important;
+  margin-bottom: 1rem;
+}
+
+.floating-toolbar {
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 1000;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  text-align: center;
+  font-size: smaller;
+  font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
 }
