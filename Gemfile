@@ -57,3 +57,8 @@ end
 
 gem "bootstrap_form"
 gem "bootstrap_flash_messages", github: 'walterdavis/bootstrap_flash_messages'
+gem "fly-rails"
+
+gem "dockerfile-rails", ">= 1.7", :group => :development
+
+gem "aws-sdk-s3", "~> 1.179", :require => false
