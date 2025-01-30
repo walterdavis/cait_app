@@ -1,0 +1,11 @@
+<% content_for :title, "New shape" %>
+
+<h1>New shape</h1>
+
+<%= render "form", shape: @shape %>
+
+<br>
+
+<div>
+  <%= link_to "Back to shapes", admin_shapes_path, class: 'btn btn-outline-secondary' %>
+</div>

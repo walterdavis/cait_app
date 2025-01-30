@@ -1,0 +1,8 @@
+<%= render @shape %>
+
+<div>
+  <%= link_to "Edit this shape", edit_admin_shape_path(@shape), class: 'btn btn-outline-primary' %> |
+  <%= link_to "Back to shapes", admin_shapes_path, class: 'btn btn-outline-secondary' %>
+
+  <%= button_to "Remove shape", admin_shape_path(@shape), method: :delete, class: 'btn btn-secondary' %>
+</div>

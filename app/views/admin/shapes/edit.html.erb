@@ -1,0 +1,12 @@
+<% content_for :title, "Editing shape" %>
+
+<h1>Editing shape</h1>
+
+<%= render "form", shape: @shape %>
+
+<br>
+
+<div>
+  <%= link_to "Show this shape", admin_shape_path(@shape) %> |
+  <%= link_to "Back to shapes", admin_shapes_path, class: 'btn btn-outline-secondary' %>
+</div>

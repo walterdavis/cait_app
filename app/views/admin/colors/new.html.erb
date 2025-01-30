@@ -1,0 +1,11 @@
+<% content_for :title, "New color" %>
+
+<h1>New color</h1>
+
+<%= render "form", color: @color %>
+
+<br>
+
+<div>
+  <%= link_to "Back to colors", admin_colors_path, class: 'btn btn-outline-secondary' %>
+</div>

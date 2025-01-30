@@ -1,0 +1,5 @@
+<%= bootstrap_form_with(model: [:admin, color]) do |form| %>
+  <%= form.alert_message "Please correct the #{pluralize(form.object.errors.count, 'error')} below." %>
+  <%= form.text_field :name %>
+  <%= form.primary %>
+<%- end -%>

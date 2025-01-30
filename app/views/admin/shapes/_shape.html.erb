@@ -1,0 +1,7 @@
+<div id="<%= dom_id shape %>">
+  <p>
+    <strong>Name:</strong>
+    <%= shape.name %>
+  </p>
+  <%= tag.p 'Customizable!', class: 'badge text-bg-info' if shape.customize? %>
+</div>

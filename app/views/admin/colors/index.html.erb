@@ -1,0 +1,14 @@
+<% content_for :title, "Colors" %>
+
+<h1>Colors</h1>
+
+<div id="colors">
+  <% @colors.each do |color| %>
+    <%= render color %>
+    <p>
+      <%= link_to "Show this color", admin_color_path(color), class: 'btn btn-outline-primary' %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New color", new_admin_color_path, class: 'btn btn-success' %>
