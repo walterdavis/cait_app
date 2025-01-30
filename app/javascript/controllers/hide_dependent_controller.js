@@ -7,8 +7,11 @@ export default class extends Controller {
     condition: String
   };
 
+  connect () {
+    this.visibility();
+  }
+
   visibility () {
-    console.log(this.element)
     document.querySelectorAll(this.targetValue).forEach( (elm) => {
       if (this.element.matches(this.conditionValue)) {
         elm.classList.add('visually-hidden');

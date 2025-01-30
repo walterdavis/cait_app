@@ -30,5 +30,7 @@
 en:
   activerecord:
     attributes:
+      person:
+        pickup: 'Customer will pick up'
     models:
       custom_product: Order

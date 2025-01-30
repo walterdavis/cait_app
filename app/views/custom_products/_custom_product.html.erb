@@ -1,5 +1,2 @@
-<p>
-  <%= custom_product.updated_at %>
-  <%= custom_product.person.name %>
-  <%= link_to custom_product.description, custom_product %>
-</p>
+<p><%= custom_product.description %></p>
+<%= tag.p "Custom text: #{custom_product.custom_text}" if custom_product.custom_text? %>
