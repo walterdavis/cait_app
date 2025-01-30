@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
-    <title><%= content_for(:title) || "Cait App" %></title>
+    <title><%= content_for(:title) || "Custom Orders" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,22 +23,28 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <body class="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-md bg-body-tertiary flex-shrink-0">
       <div class="container">
         <a class="navbar-brand" href="/"><%= image_tag('logo.svg', class: 'brand-logo') %> Caitlin Davis Ceramics</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <%= link_to 'New Order', new_custom_product_path, class: 'btn btn-secondary ms-auto' %>
+          <%- if controller_path.include? 'admin/' -%>
+          <%= link_to 'Colors', admin_colors_path, class: "btn #{controller_path.match?(/\/color/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
+          <%= link_to 'Shapes', admin_shapes_path, class: "btn #{controller_path.match?(/\/shape/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
+          <%- end -%>
+          <%= link_to 'New Order', new_order_path, class: 'btn btn-secondary ms-auto' %>
         </div>
       </div>
     </nav>
     <main class="container">
+      <div id="flash_messages"><%= bootstrap_flash_messages :close, :html %></div>
       <%= yield %>
     </main>
-    <footer class="container">
+    <footer class="container mt-auto">
+      <p>© 2025 Caitlin Davis Ceramics</p>
     </footer>
   </body>
 </html>
