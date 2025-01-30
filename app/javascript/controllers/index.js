@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import HideDependentController from "./hide_dependent_controller"
 application.register("hide-dependent", HideDependentController)
+
+import NestedFormController from "./nested_form_controller"
+application.register("nested-form", NestedFormController)

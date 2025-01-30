@@ -56,3 +56,4 @@ group :test do
 end
 
 gem "bootstrap_form"
+gem "bootstrap_flash_messages", github: 'walterdavis/bootstrap_flash_messages'
