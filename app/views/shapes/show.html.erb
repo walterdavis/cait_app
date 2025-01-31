@@ -1,6 +1,6 @@
 <%- if @shape.customize? -%>
 <div class="mb-3">
   <%= label_tag :order_custom_products_custom_text, 'Custom text' %>
-  <%= text_field_tag 'order[custom_products][custom_text]', '', class: 'form-control' %>
+  <%= text_field_tag 'order[custom_products_attributes][][custom_text]', '', class: 'form-control' %>
 </div>
 <%- end -%>

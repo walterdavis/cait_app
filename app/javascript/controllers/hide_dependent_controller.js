@@ -15,6 +15,9 @@ export default class extends Controller {
     document.querySelectorAll(this.targetValue).forEach( (elm) => {
       if (this.element.matches(this.conditionValue)) {
         elm.classList.add('visually-hidden');
+        elm.querySelectorAll('input, textarea').forEach( (el) => {
+          el.value = '';
+        });
       } else {
         elm.classList.remove('visually-hidden');
       }

@@ -1,26 +1,29 @@
 <%= bootstrap_form_with model: @order, class: 'row', data: { controller: 'nested-form' } do |form| %>
+<%= form.alert_message "Please fix the errors below." %>
 <%= form.fields_for :person do |pf| %>
-  <%= pf.text_field :name, wrapper_class: 'col-md-6 mb-3' %>
-  <%= pf.email_field :email, wrapper_class: 'col-md-6 mb-3' %>
+  <%= pf.text_area :name, rows: 1, wrapper_class: 'col-md-6 mb-3', autofocus: true, **no_auto %>
+  <%= pf.text_area :email, rows: 1, wrapper_class: 'col-md-6 mb-3', **no_auto %>
   <div>
     <%= pf.check_box :pickup, data: { controller: 'hide-dependent', action: 'hide-dependent#visibility', 'hide-dependent-target-value': '.address-box', 'hide-dependent-condition-value': ':checked' } %>
   </div>
-  <%= pf.text_area :address, rows: 5, wrapper_class: 'address-box mb-3' %>
+  <%= pf.text_area :address, rows: 5, wrapper_class: 'address-box mb-3', **no_auto %>
 <%- end -%>
 <h2 class="my-3">Products</h2>
 <template data-nested-form-target="template">
-  <%= form.fields_for :custom_products, @order.custom_products.build do |f| %>
+  <%= form.fields_for :custom_products, @order.custom_products.build, child_index: 'TEMPLATE_RECORD' do |f| %>
   <div class="col-md-12 nested-fields" data-controller="custom">
     <button type="button" class="btn-close float-end" data-dismiss="modal" aria-label="Close"
       data-action="click->nested-form#remove_association">
     </button>
   <%= f.hidden_field :_destroy %>
     <div class="row">
-      <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3' %>
+      <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', **no_auto %>
       <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-5 mb-3' %>
       <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-5 mb-3' }, data: { action: 'custom#customize' } %>
     </div>
-    <div data-custom-target="field"></div>
+    <div data-custom-target="field">
+      <%= f.text_field :custom_text, **no_auto %>
+    </div>
   </div>
   <%- end -%>
 </template>
@@ -31,11 +34,13 @@
   </button>
   <%= f.hidden_field :_destroy %>
   <div class="row">
-    <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3' %>
+    <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', **no_auto %>
     <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-5 mb-3' %>
     <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-5 mb-3' }, data: { action: 'custom#customize' } %>
   </div>
-  <div data-custom-target="field"></div>
+  <div data-custom-target="field">
+    <%= f.text_field :custom_text, **no_auto %>
+  </div>
 </div>
 <%- end -%>
 <div class="col-md-12 my-3" data-nested-form-target="add_item">
