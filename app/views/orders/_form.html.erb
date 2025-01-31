@@ -10,7 +10,7 @@
 <%- end -%>
 <h2 class="my-3">Products</h2>
 <template data-nested-form-target="template">
-  <%= form.fields_for :custom_products, @order.custom_products.build, child_index: 'TEMPLATE_RECORD' do |f| %>
+  <%= form.fields_for :custom_products, Order.new.custom_products.build, child_index: 'TEMPLATE_RECORD' do |f| %>
   <div class="col-md-12 nested-fields" data-controller="custom">
     <button type="button" class="btn-close float-end" data-dismiss="modal" aria-label="Close"
       data-action="click->nested-form#remove_association">

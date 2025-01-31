@@ -5,19 +5,16 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.build_person
+    @order.custom_products.build
   end
 
   def create
-    @order = Order.new
-    @order.build_person
-    @order.assign_attributes order_params
-    Rails.logger.info order_params.inspect
+    @order = Order.new order_params
     respond_to do |format|
       if @order.save
         format.html { redirect_to order_path(@order), notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
-        @order.build_person
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
