@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :person
-  has_many :custom_products
+  has_one :person, dependent: :destroy
+  has_many :custom_products, dependent: :destroy
 
   accepts_nested_attributes_for :person, reject_if: :all_blank
   accepts_nested_attributes_for :custom_products,

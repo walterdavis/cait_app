@@ -32,19 +32,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "person_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_orders_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
+    t.integer "order_id", null: false
     t.string "name"
     t.string "email"
     t.boolean "pickup", default: false
     t.string "address", limit: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_people_on_order_id"
   end
 
   create_table "shapes", force: :cascade do |t|
@@ -58,5 +58,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
   add_foreign_key "custom_products", "colors"
   add_foreign_key "custom_products", "orders"
   add_foreign_key "custom_products", "shapes"
-  add_foreign_key "orders", "people"
+  add_foreign_key "people", "orders"
 end
