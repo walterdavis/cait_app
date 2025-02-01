@@ -1,7 +1,7 @@
 module Admin
 class ShapesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_shape, only: %i[ show edit update destroy ]
+  before_action :set_shape, only: %i[ show edit update destroy sort ]
 
   # GET /shapes or /shapes.json
   def index
@@ -47,6 +47,11 @@ class ShapesController < ApplicationController
         format.json { render json: @shape.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def sort
+    @shape.insert_at(params.expect(:position).to_i)
+    head :no_content
   end
 
   # DELETE /shapes/1 or /shapes/1.json

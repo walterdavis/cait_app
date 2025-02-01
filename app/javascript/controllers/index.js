@@ -15,3 +15,6 @@ application.register("hide-dependent", HideDependentController)
 
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
+
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)

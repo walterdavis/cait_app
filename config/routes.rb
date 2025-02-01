@@ -2,9 +2,15 @@ Rails.application.routes.draw do
   resources :shapes, only: :show
 
   namespace :admin do
-    resources :shapes
-    resources :colors
+    resources :shapes do
+      put :sort, on: :member
+    end
+
+    resources :colors do
+      put :sort, on: :member
+    end
   end
+
   resources :orders
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,8 +1,1 @@
 <%= render @color %>
-
-<div>
-  <%= link_to "Edit this color", edit_admin_color_path(@color), class: 'btn btn-outline-primary' %> |
-  <%= link_to "Back to colors", admin_colors_path, class: 'btn btn-outline-secondary' %>
-
-  <%= button_to "Remove color", admin_color_path(@color), method: :delete, class: 'btn btn-secondary' %>
-</div>

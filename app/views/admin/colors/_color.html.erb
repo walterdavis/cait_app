@@ -1,6 +1,7 @@
-<div id="<%= dom_id color %>">
-  <p>
-    <strong>Name:</strong>
+<%= turbo_frame_tag dom_id(color) do %>
+  <div class="d-inline-block col-md-10">
     <%= color.name %>
-  </p>
-</div>
+  </div>
+  <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn btn-outline-secondary' %>
+  <%= button_to "Delete", admin_color_path(color), method: :delete, form_class: 'd-inline', class: 'btn btn-secondary' %>
+<%- end -%>

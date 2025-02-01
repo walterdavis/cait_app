@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to order_path(@order), notice: "Order was successfully updated." }
-        format.json { render :show, status: :ok, location: @order}
+        format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -59,6 +59,6 @@ class OrdersController < ApplicationController
 
   def order_params
     params.expect(order: [ person_attributes: [ :name, :email, :address, :pickup ],
-                  custom_products_attributes: [[ :id, :quantity, :color_id, :shape_id, :custom_text, :_destroy ]]])
+                  custom_products_attributes: [ [ :id, :quantity, :color_id, :shape_id, :custom_text, :_destroy ] ] ])
   end
 end

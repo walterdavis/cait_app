@@ -2,13 +2,12 @@
 
 <h1>Colors</h1>
 
-<div id="colors">
-  <% @colors.each do |color| %>
-    <%= render color %>
-    <p>
-      <%= link_to "Show this color", admin_color_path(color), class: 'btn btn-outline-primary' %>
-    </p>
-  <% end %>
-</div>
+<ul data-controller="sortable" class="list-group my-3">
+  <%- @colors.each do |color| -%>
+  <%= tag.li 'data-sortable-url': sort_admin_color_path(color), class: 'list-group-item' do %>
+  <%= render color %>
+  <%- end -%>
+  <%- end -%>
+</ul>
 
 <%= link_to "New color", new_admin_color_path, class: 'btn btn-success' %>

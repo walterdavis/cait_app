@@ -41,3 +41,15 @@ footer p {
   font-size: smaller;
   font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
 }
+
+[data-controller="sortable"] > li {
+  cursor: move;
+  turbo-frame {
+    display: block;
+    background-image: url('grip-vertical-solid.svg');
+    background-size: 1em;
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 3rem;
+  }
+}

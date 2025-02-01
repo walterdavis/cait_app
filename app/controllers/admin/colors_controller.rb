@@ -1,11 +1,11 @@
 module Admin
 class ColorsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_color, only: %i[ show edit update destroy ]
+  before_action :set_color, only: %i[ show edit update destroy sort ]
 
   # GET /colors or /colors.json
   def index
-    @colors = Color.all
+    @colors = Color.order(:position)
   end
 
   # GET /colors/1 or /colors/1.json
@@ -28,7 +28,7 @@ class ColorsController < ApplicationController
     respond_to do |format|
       if @color.save
         format.html { redirect_to admin_color_path(@color), notice: "Color was successfully created." }
-        format.json { render :show, status: :created, location: @color }
+        format.json { render :show, status: :created, location: admin_color_path(@color) }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @color.errors, status: :unprocessable_entity }
@@ -41,12 +41,17 @@ class ColorsController < ApplicationController
     respond_to do |format|
       if @color.update(color_params)
         format.html { redirect_to admin_color_path(@color), notice: "Color was successfully updated." }
-        format.json { render :show, status: :ok, location: @color }
+        format.json { render :show, status: :ok, location: admin_color_path(@color) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @color.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def sort
+    @color.insert_at(params.expect(:position).to_i)
+    head :no_content
   end
 
   # DELETE /colors/1 or /colors/1.json
