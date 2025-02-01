@@ -27,8 +27,9 @@ class ColorsController < ApplicationController
 
     respond_to do |format|
       if @color.save
-        format.html { redirect_to admin_color_path(@color), notice: "Color was successfully created." }
-        format.json { render :show, status: :created, location: admin_color_path(@color) }
+        format.html { redirect_to admin_colors_path, status: :see_other }
+        format.json { render :index, status: :created, location: admin_colors_path }
+        format.turbo_stream { }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @color.errors, status: :unprocessable_entity }
@@ -40,7 +41,7 @@ class ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        format.html { redirect_to admin_color_path(@color), notice: "Color was successfully updated." }
+        format.html { redirect_to admin_color_path(@color) }
         format.json { render :show, status: :ok, location: admin_color_path(@color) }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,8 +60,9 @@ class ColorsController < ApplicationController
     @color.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_colors_path, status: :see_other, notice: "Color was successfully removed." }
+      format.html { redirect_to admin_colors_path, status: :see_other }
       format.json { head :no_content }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(helpers.dom_id(@color, 'list-item')) }
     end
   end
 

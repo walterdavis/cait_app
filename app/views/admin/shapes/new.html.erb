@@ -2,8 +2,9 @@
 
 <h1>New shape</h1>
 
+<%= turbo_frame_tag 'new_shape' do %>
 <%= render "form", shape: @shape %>
-
+<%- end -%>
 <br>
 
 <div>

@@ -2,7 +2,7 @@
 <%= bootstrap_form_with(model: [:admin, color], class: 'row py-2') do |form| %>
   <%= form.text_field :name, wrapper_class: 'col-md-4' %>
   <div class="col d-flex align-items-end">
-    <%= form.primary %>
+    <%= form.primary class: 'ms-auto btn btn-primary' %>
     <%= link_to 'Cancel', admin_color_path(color), class: 'btn btn-outline-secondary ms-1' if color.persisted? %>
   </div>
 <%- end -%>

@@ -1,7 +1,10 @@
-<div id="<%= dom_id shape %>">
-  <p>
-    <strong>Name:</strong>
+<%= turbo_frame_tag dom_id(shape) do %>
+  <div class="d-flex-inline align-self-center">
     <%= shape.name %>
-  </p>
-  <%= tag.p 'Customizable!', class: 'badge text-bg-info' if shape.customize? %>
-</div>
+    <%= shape.customize? ? tag.span('Custom Text', class: 'custom') : '' %>
+  </div>
+  <div class="ms-auto">
+    <%= link_to 'Edit', edit_admin_shape_path(shape), class: 'btn btn-outline-secondary' %>
+    <%= button_to "Delete", admin_shape_path(shape), method: :delete, form_class: 'd-inline', class: 'btn btn-secondary', form: { data: { turbo_confirm: "Are you sure?" } } %>
+  </div>
+<%- end -%>

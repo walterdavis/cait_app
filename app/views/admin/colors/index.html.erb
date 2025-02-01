@@ -4,10 +4,13 @@
 
 <ul data-controller="sortable" class="list-group my-3">
   <%- @colors.each do |color| -%>
-  <%= tag.li 'data-sortable-url': sort_admin_color_path(color), class: 'list-group-item' do %>
+  <%= tag.li 'data-sortable-url': sort_admin_color_path(color), class: 'list-group-item', id: dom_id(color, 'list-item') do %>
   <%= render color %>
   <%- end -%>
   <%- end -%>
+  <%= tag.li class: 'list-group-item', id: 'new_color_item' do %>
+  <%= turbo_frame_tag 'new_color' %>
+  <%- end -%>
 </ul>
 
-<%= link_to "New color", new_admin_color_path, class: 'btn btn-success' %>
+<%= link_to "New color", new_admin_color_path, data: { turbo_frame: 'new_color' }, class: 'btn btn-success' %>

@@ -42,14 +42,29 @@ footer p {
   font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
 }
 
-[data-controller="sortable"] > li {
+[data-controller="sortable"] > li[data-sortable-url] {
   cursor: move;
   turbo-frame {
-    display: block;
+    display: flex;
     background-image: url('grip-vertical-solid.svg');
     background-size: 1em;
     background-position: left center;
     background-repeat: no-repeat;
     padding-left: 3rem;
+    &:empty {
+      display: original;
+    }
   }
+}
+
+.custom {
+  font-size: small;
+  padding-left: 1.5rem;
+  margin-left: 1rem;
+  display: inline-block;
+  background-image: url('wrench-solid.svg');
+  background-size: 1rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  color: var(--bs-orange);
 }

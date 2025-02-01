@@ -1,0 +1,6 @@
+<%= turbo_stream.before('new_shape_item') do %>
+  <%= tag.li 'data-sortable-url': sort_admin_shape_path(@shape), class: 'list-group-item', id: dom_id(@shape, 'list-item') do %>
+  <%= render @shape %>
+  <%- end -%>
+<%- end -%>
+<%= turbo_stream.update('new_shape', '') %>

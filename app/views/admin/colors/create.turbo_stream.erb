@@ -1,0 +1,6 @@
+<%= turbo_stream.before('new_color_item') do %>
+  <%= tag.li 'data-sortable-url': sort_admin_color_path(@color), class: 'list-group-item', id: dom_id(@color, 'list-item') do %>
+  <%= render @color %>
+  <%- end -%>
+<%- end -%>
+<%= turbo_stream.update('new_color', '') %>

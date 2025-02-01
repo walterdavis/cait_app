@@ -5,7 +5,7 @@ class ShapesController < ApplicationController
 
   # GET /shapes or /shapes.json
   def index
-    @shapes = Shape.all
+    @shapes = Shape.order(:position)
   end
 
   # GET /shapes/1 or /shapes/1.json
@@ -27,8 +27,9 @@ class ShapesController < ApplicationController
 
     respond_to do |format|
       if @shape.save
-        format.html { redirect_to admin_shape_path(@shape), notice: "Shape was successfully created." }
+        format.html { redirect_to admin_shapes_path }
         format.json { render :show, status: :created, location: @shape }
+        format.turbo_stream { }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @shape.errors, status: :unprocessable_entity }
@@ -40,7 +41,7 @@ class ShapesController < ApplicationController
   def update
     respond_to do |format|
       if @shape.update(shape_params)
-        format.html { redirect_to admin_shape_path(@shape), notice: "Shape was successfully updated." }
+        format.html { redirect_to admin_shape_path(@shape) }
         format.json { render :show, status: :ok, location: @shape }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,8 +60,9 @@ class ShapesController < ApplicationController
     @shape.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_shapes_path, status: :see_other, notice: "Shape was successfully removed." }
+      format.html { redirect_to admin_shapes_path, status: :see_other }
       format.json { head :no_content }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(helpers.dom_id(@shape, 'list-item')) }
     end
   end
 
