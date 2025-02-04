@@ -1,8 +1,8 @@
-<%= turbo_frame_tag dom_id(shape) do %>
-<%= bootstrap_form_with(model: [:admin, shape], class: 'row py-2') do |form| %>
+<%= turbo_frame_tag dom_id(shape), class: 'ps-4' do %>
+<%= bootstrap_form_with(model: [:admin, shape], class: 'row') do |form| %>
   <%= form.text_field :name, wrapper_class: 'col-md-4' %>
-  <%= form.check_box :customize, wrapper_class: 'col-md-4 align-self-end' %>
-  <div class="col d-flex align-items-end">
+  <%= form.check_box :customize, wrapper_class: 'col-md-3 align-self-end' %>
+  <div class="col align-self-end text-end">
     <%= form.primary class: 'ms-auto btn btn-primary' %>
     <%= link_to 'Cancel', admin_shape_path(shape), class: 'btn btn-outline-secondary ms-1' if shape.persisted? %>
   </div>

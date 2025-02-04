@@ -1,0 +1,4 @@
+<p><%= person.name %></p>
+<p><%= person.email %></p>
+<%= tag.p 'Pickup' if person.pickup? %>
+<%= simple_format person.address unless person.pickup? %>

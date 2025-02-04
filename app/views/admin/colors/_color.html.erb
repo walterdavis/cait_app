@@ -1,8 +1,8 @@
-<%= turbo_frame_tag dom_id(color) do %>
-  <div class="d-flex-inline align-self-center">
+<%= turbo_frame_tag dom_id(color), class: 'ps-4' do %>
+  <div class="d-inline-block py-2">
     <%= color.name %>
   </div>
-  <div class="ms-auto">
+  <div class="d-inline-block float-end">
     <%= link_to 'Edit', edit_admin_color_path(color), class: 'btn btn-outline-secondary' %>
     <%= button_to "Delete", admin_color_path(color), method: :delete, form_class: 'd-inline', class: 'btn btn-secondary', form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>

@@ -45,15 +45,12 @@ footer p {
 [data-controller="sortable"] > li[data-sortable-url] {
   cursor: move;
   turbo-frame {
-    display: flex;
+    display: block;
+    overflow: hidden;
     background-image: url('grip-vertical-solid.svg');
     background-size: 1em;
     background-position: left center;
     background-repeat: no-repeat;
-    padding-left: 3rem;
-    &:empty {
-      display: original;
-    }
   }
 }
 
@@ -67,4 +64,8 @@ footer p {
   background-position: left center;
   background-repeat: no-repeat;
   color: var(--bs-orange);
+}
+
+.btn-group form .btn {
+  border-radius: 0 !important;
 }
