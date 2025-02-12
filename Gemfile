@@ -65,3 +65,5 @@ gem "litestream", "~> 0.12.0"
 gem "acts_as_list"
 gem "kaminari"
 gem "ransack"
+
+gem "money-rails", "~> 1.15"

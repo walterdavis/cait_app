@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_11_233158) do
   create_table "colors", force: :cascade do |t|
     t.string "name"
     t.integer "position", default: 0, null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "paid_cents", default: 0
   end
 
   create_table "people", force: :cascade do |t|
@@ -53,6 +54,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_26_192715) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "customize", default: false, null: false
+    t.integer "price_cents", default: 0, null: false
   end
 
   add_foreign_key "custom_products", "colors"

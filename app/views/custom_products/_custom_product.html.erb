@@ -1,2 +1,2 @@
-<p><%= custom_product.description %></p>
+<p><%= custom_product.description %> <%= tag.span humanized_money_with_symbol(custom_product.extended_price), class: 'price' %></p>
 <%= tag.p "Custom text: #{custom_product.custom_text}" if custom_product.custom_text? %>

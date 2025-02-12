@@ -3,14 +3,14 @@ import { get } from '@rails/request.js'
 
 // Connects to data-controller="custom"
 export default class extends Controller {
-  static targets = ["field"]
+  static targets = ["field"];
 
   connect() {
     if (!this.hasFieldTarget) {
-      return console.error('Custom field not properly configured')
+      return console.error('Custom field not properly configured');
     }
 
-    this.fieldTarget.classList.add('visually-hidden');
+    if (!!!this.fieldTarget.value) this.fieldTarget.classList.add('visually-hidden');
   }
 
   async customize(evt) {

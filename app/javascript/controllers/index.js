@@ -16,5 +16,11 @@ application.register("hide-dependent", HideDependentController)
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
 
+import PriceController from "./price_controller"
+application.register("price", PriceController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
+
+import SubtotalController from "./subtotal_controller"
+application.register("subtotal", SubtotalController)

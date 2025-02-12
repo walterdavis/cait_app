@@ -7,6 +7,8 @@ class Order < ApplicationRecord
     allow_destroy: true,
     reject_if: proc { |attrs| attrs["color_id"].blank? || attrs["shape_id"].blank? }
 
+  monetize :paid_cents, allow_nil: true
+
   def description
     custom_products.map(&:description).to_sentence
   end

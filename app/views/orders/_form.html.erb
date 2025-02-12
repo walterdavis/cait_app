@@ -1,4 +1,4 @@
-<%= bootstrap_form_with model: @order, class: 'row', data: { controller: 'nested-form' } do |form| %>
+<%= bootstrap_form_with model: @order, class: 'row', data: { controller: 'nested-form subtotal' } do |form| %>
 <%= form.alert_message "Please fix the errors below." %>
 <%= form.fields_for :person do |pf| %>
   <%= pf.text_area :name, rows: 1, wrapper_class: 'col-md-6 mb-3', autofocus: true, **no_auto %>
@@ -16,10 +16,11 @@
       data-action="click->nested-form#remove_association">
     </button>
   <%= f.hidden_field :_destroy %>
-    <div class="row">
-      <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', **no_auto %>
-      <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-5 mb-3' %>
-      <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-5 mb-3' }, data: { action: 'custom#customize' } %>
+    <div class="row" data-controller="price">
+      <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', data: { action: 'price#update', 'price-target': 'quantity' }, **no_auto %>
+      <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
+      <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
+      <div class="col-md-2 align-self-end mb-4 text-end" data-price-target="output" data-subtotal-target="line" data-extended="0">extended price here</div>
     </div>
     <div data-custom-target="field">
       <%= f.text_field :custom_text, **no_auto %>
@@ -33,10 +34,11 @@
     data-action="click->nested-form#remove_association">
   </button>
   <%= f.hidden_field :_destroy %>
-  <div class="row">
-    <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', **no_auto %>
-    <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-5 mb-3' %>
-    <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-5 mb-3' }, data: { action: 'custom#customize' } %>
+  <div class="row" data-controller="price">
+    <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', data: { action: 'price#update', 'price-target': 'quantity' }, **no_auto %>
+    <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
+    <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
+    <div class="col-md-2 align-self-end mb-4 text-end" data-price-target="output" data-subtotal-target="line" data-extended="0">extended price here</div>
   </div>
   <div data-custom-target="field">
     <%= f.text_field :custom_text, **no_auto %>
@@ -49,6 +51,7 @@
 <div class="position-sticky bottom-0 start-0 floating-toolbar">
   <div class="row">
     <div class="border-top py-3 my-3 text-end">
+      <span class="d-inline-block me-4" data-subtotal-target="footer"></span>
       <%= link_to 'Cancel', root_path, class: 'btn btn-outline-secondary' %>
       <%= form.primary %>
     </div>

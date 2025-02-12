@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :orders, except: %i[ new create ]
   end
 
+  resources :prices, only: :show
+
   resources :orders, only: %i[ new create show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
