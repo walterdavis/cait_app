@@ -20,6 +20,11 @@ export default class extends Controller {
     item.querySelectorAll("select").forEach((elm) => {
       elm.removeAttribute('required');
     });
+    item.querySelectorAll("[data-extended]").forEach((elm) => {
+      elm.dataset.extended = 0;
+    });
+    const evt = new CustomEvent("product:updated", { bubbles: true });
+    item.dispatchEvent(evt);
     item.style.display = 'none';
   }
 }
