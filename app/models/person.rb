@@ -1,4 +1,4 @@
 class Person < ApplicationRecord
-  validates :name, :email, presence: true
+  validates :name, :email, :phone, presence: true
   belongs_to :order
 end

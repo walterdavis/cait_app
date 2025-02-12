@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_11_233158) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_12_210020) do
   create_table "colors", force: :cascade do |t|
     t.string "name"
     t.integer "position", default: 0, null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_11_233158) do
     t.string "address", limit: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone", null: false
     t.index ["order_id"], name: "index_people_on_order_id"
   end
 

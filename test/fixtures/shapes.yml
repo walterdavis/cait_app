@@ -3,7 +3,9 @@
 one:
   name: Square
   position: 0
+  price_cents: 100
 
 two:
   name: Circle
   position: 1
+  price_cents: 100

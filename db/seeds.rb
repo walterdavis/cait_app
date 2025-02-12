@@ -11,10 +11,10 @@
   Color.find_or_create_by(name: color, position: idx)
 end
 
-[ { name: 'Grail-shaped', position: 0, customize: false },
-  { name: 'Harmless bunny rabbit', position: 1, customize: false },
-  { name: 'Holy hand-grenade', position: 2, customize: false },
-  { name: 'Garden stake', position: 3, customize: true }
+[ { name: 'Grail-shaped', position: 0, customize: false, price_cents: 10_000 },
+  { name: 'Harmless bunny rabbit', position: 1, customize: false, price_cents: 10_000 },
+  { name: 'Holy hand-grenade', position: 2, customize: false, price_cents: 10_000 },
+  { name: 'Garden stake', position: 3, customize: true, price_cents: 10_000 }
 ].each do |shape|
   Shape.find_or_create_by(**shape)
 end

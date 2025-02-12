@@ -16,15 +16,11 @@ export default class extends Controller {
   remove_association(event) {
     event.preventDefault();
     let item = event.target.closest(".nested-fields");
-    item.querySelector("input[name*='_destroy']").value = 1;
-    item.querySelectorAll("select").forEach((elm) => {
-      elm.removeAttribute('required');
-    });
-    item.querySelectorAll("[data-extended]").forEach((elm) => {
-      elm.dataset.extended = 0;
-    });
+    let destroyer = item.querySelector("input[name*='_destroy']")
+    destroyer.value = 1;
+    destroyer.form.appendChild(destroyer);
     const evt = new CustomEvent("product:updated", { bubbles: true });
-    item.dispatchEvent(evt);
-    item.style.display = 'none';
+    item.remove();
+    destroyer.dispatchEvent(evt);
   }
 }
