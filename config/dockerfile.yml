@@ -6,4 +6,3 @@ options:
     fly_launch_runtime: rails
   litefs: true
   litestream: true
-  tigris: false
