@@ -101,3 +101,4 @@ ENTRYPOINT ["litefs", "mount"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 VOLUME /data
+CMD ["./bin/rails", "server -b 0.0.0.0"]
