@@ -74,7 +74,7 @@ class ShapesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shape_params
-      params.expect(shape: [ :name, :position, :customize ])
+      params.expect(shape: [ :name, :position, :customize, :price ])
     end
 end
 end

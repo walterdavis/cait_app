@@ -1,2 +1,4 @@
-<p><%= custom_product.description %></p>
-<%= tag.p "Custom text: #{custom_product.custom_text}" if custom_product.custom_text? %>
+<div class="list-group-item">
+  <p mb-0><%= custom_product.description %> <%= tag.span humanized_money_with_symbol(custom_product.extended_price), class: 'price d-inline-block float-end' %></p>
+  <%= tag.p sanitize("Custom text: <em>#{custom_product.custom_text}</em>"), class: 'mb-0' if custom_product.custom_text? %>
+</div>

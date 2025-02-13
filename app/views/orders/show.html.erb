@@ -1,3 +1,4 @@
 <p><%= @order.updated_at.to_fs(:long) %></p>
 <%= render @order.person %>
 <%= render @order.custom_products %>
+<p>Subtotal: <%= humanized_money_with_symbol(@order.subtotal) %></p>

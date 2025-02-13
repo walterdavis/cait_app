@@ -1,4 +1,5 @@
 <p><%= person.name %></p>
 <p><%= person.email %></p>
+<p><%= phone(person.phone) %></p>
 <%= tag.p 'Pickup' if person.pickup? %>
 <%= simple_format person.address unless person.pickup? %>

@@ -3,11 +3,13 @@
 <%= form.fields_for :person do |pf| %>
   <%= pf.text_area :name, rows: 1, wrapper_class: 'col-md-6 mb-3', **no_auto %>
   <%= pf.text_area :email, rows: 1, wrapper_class: 'col-md-6 mb-3', **no_auto %>
-  <div>
+  <div class="col-md-6 mb-3">
     <%= pf.check_box :pickup, data: { controller: 'hide-dependent', action: 'hide-dependent#visibility', 'hide-dependent-target-value': '.address-box', 'hide-dependent-condition-value': ':checked' } %>
   </div>
+  <%= pf.text_area :phone, rows: 1, wrapper_class: 'col-md-6 mb-3', **no_auto %>
   <%= pf.text_area :address, rows: 5, wrapper_class: 'address-box mb-3', **no_auto %>
 <%- end -%>
+<%= form.text_field :paid, wrapper_class: 'col-md-4 mb-3' %>
 <h2 class="my-3">Products</h2>
 <template data-nested-form-target="template">
   <%= form.fields_for :custom_products, Order.new.custom_products.build, child_index: 'TEMPLATE_RECORD' do |f| %>

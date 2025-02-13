@@ -36,21 +36,31 @@ nav.bg-body-tertiary {
   padding-bottom: 3rem;
 }
 
-footer p {
-  text-align: center;
-  font-size: smaller;
-  font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
+footer {
+  padding-top: 2rem;
+
+  p {
+    text-align: center;
+    font-size: smaller;
+    font-family: Optima, Segoe, Segoe UI, Candara, Calibri, var(--bs-body-font-family);
+  }
 }
 
 [data-controller="sortable"] > li[data-sortable-url] {
-  cursor: move;
   turbo-frame {
     display: block;
     overflow: hidden;
-    background-image: url('grip-vertical-solid.svg');
-    background-size: 1em;
-    background-position: left center;
-    background-repeat: no-repeat;
+    .handle {
+      width: 1em;
+      height: 1.6em;
+      background-image: url('grip-vertical-solid.svg');
+      background-size: 1em;
+      background-position: left center;
+      background-repeat: no-repeat;
+      cursor: move;
+      vertical-align: middle;
+      margin-right: .7rem;
+    }
   }
 }
 
@@ -72,4 +82,8 @@ footer p {
 
 textarea {
   resize: none;
+}
+
+.price {
+  margin-left: 1em;
 }

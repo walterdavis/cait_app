@@ -8,8 +8,18 @@ class Order < ApplicationRecord
     reject_if: proc { |attrs| attrs["color_id"].blank? || attrs["shape_id"].blank? }
 
   monetize :paid_cents, allow_nil: true
+  monetize :subtotal_cents
+  monetize :due_cents
 
   def description
     custom_products.map(&:description).to_sentence
+  end
+
+  def subtotal_cents
+    custom_products.map(&:extended_price_cents).sum
+  end
+
+  def due_cents
+    subtotal_cents - paid_cents
   end
 end

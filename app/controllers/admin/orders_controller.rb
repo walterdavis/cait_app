@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.expect(order: [ person_attributes: [ :name, :email, :address, :pickup ],
+    params.expect(order: [ :paid, person_attributes: [ :name, :email, :address, :pickup, :phone ],
                   custom_products_attributes: [ [ :id, :quantity, :color_id, :shape_id, :custom_text, :_destroy ] ] ])
   end
 end

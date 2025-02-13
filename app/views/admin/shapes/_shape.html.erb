@@ -1,7 +1,9 @@
-<%= turbo_frame_tag dom_id(shape), class: 'ps-4' do %>
+<%= turbo_frame_tag dom_id(shape) do %>
+  <div class="d-inline-block handle"></div>
   <div class="d-inline-block py-2">
     <%= shape.name %>
     <%= shape.customize? ? tag.span('Custom Text', class: 'custom') : '' %>
+    <%= tag.span humanized_money_with_symbol(shape.price), class: 'price' %>
   </div>
   <div class="d-inline-block float-end">
     <%= link_to 'Edit', edit_admin_shape_path(shape), class: 'btn btn-outline-secondary' %>

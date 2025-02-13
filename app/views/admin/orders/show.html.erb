@@ -1,6 +1,22 @@
-<p><%= @order.updated_at.to_fs(:long) %></p>
-<%= render @order.person %>
-<%= render @order.custom_products %>
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <%= render @order.person %>
+      </div>
+      <div class="col-md-6">
+        <p><%= @order.created_at.strftime('%d %b %Y %l:%M %p') %></p>
+        <p>Subtotal: <%= humanized_money_with_symbol(@order.subtotal) %></p>
+        <p>Deposit: (<%= humanized_money_with_symbol(@order.paid) %>)</p>
+        <p>Due: <%= humanized_money_with_symbol(@order.due) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="list-group mb-3">
+  <%= render @order.custom_products %>
+</div>
 
 <div class="btn-group">
   <%= link_to 'Edit', edit_admin_order_path(@order), class: 'btn btn-outline-secondary' %>

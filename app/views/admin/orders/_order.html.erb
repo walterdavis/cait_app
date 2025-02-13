@@ -1,9 +1,11 @@
-<div class="list-group-item">
-  <%= order.updated_at.to_fs(:long) %>
-  <%= order.person.name %>
-  <%= link_to order.description, admin_order_path(order) %>
-  <span class="d-inline-block float-end">
-    <%= link_to 'Edit', edit_admin_order_path(order), class: 'btn btn-outline-secondary' %>
-    <%= button_to "Delete", admin_order_path(order), method: :delete, form_class: 'd-inline', class: 'btn btn-secondary', form: { data: { turbo_confirm: "Are you sure?" } } %>
-  </span>
+<div class="list-group-item d-flex">
+  <div class="flex-grow-1">
+    <%= order.updated_at.to_fs(:long) %>
+    <strong><%= order.person.name %></strong>
+    <%= link_to order.description, admin_order_path(order) %>
+  </div>
+  <div class="d-flex ms-auto flex-nowrap ps-2 flex-shrink-0 align-items-center">
+    <%= link_to 'Edit', edit_admin_order_path(order), class: 'btn btn-sm btn-outline-secondary' %>
+    <%= button_to "Delete", admin_order_path(order), method: :delete, form_class: 'd-inline ms-1', class: 'btn btn-sm btn-secondary', form: { data: { turbo_confirm: "Are you sure?" } } %>
+  </div>
 </div>

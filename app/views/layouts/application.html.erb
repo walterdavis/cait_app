@@ -30,11 +30,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <%- if controller_path.include?('admin/') || controller_name == 'admin' -%>
-          <%= link_to 'Orders', admin_orders_path, class: "btn brn-sm #{controller_path.match?(/\/order/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
-          <%= link_to 'Colors', admin_colors_path, class: "btn brn-sm #{controller_path.match?(/\/color/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
-          <%= link_to 'Shapes', admin_shapes_path, class: "btn brn-sm #{controller_path.match?(/\/shape/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
+          <%= link_to 'Orders', admin_orders_path, class: "btn btn-sm #{controller_path.match?(/\/order/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
+          <%= link_to 'Colors', admin_colors_path, class: "btn btn-sm #{controller_path.match?(/\/color/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
+          <%= link_to 'Shapes', admin_shapes_path, class: "btn btn-sm #{controller_path.match?(/\/shape/) ? 'btn-secondary' : 'btn-outline-secondary'} mx-2" %>
           <%- end -%>
-          <%= link_to 'New Order', new_order_path, class: 'btn btn-secondary ms-auto' %>
+          <%= link_to 'New Order', new_order_path, class: 'btn btn-secondary ms-auto flex-shrink-0' %>
         </div>
       </div>
     </nav>
