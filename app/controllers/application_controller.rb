@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     authenticate_or_request_with_http_basic do |username, password|
-      username == "mudder" && password == "bill is my uncle"
+      username == Rails.application.credentials.admin_user && password == Rails.application.credentials.admin_pw
     end
   end
 end

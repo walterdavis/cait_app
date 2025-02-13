@@ -32,5 +32,7 @@ en:
     attributes:
       person:
         pickup: 'Customer will pick up'
+      shape:
+        price_cents: Price (in cents)
     models:
       custom_product: Order
