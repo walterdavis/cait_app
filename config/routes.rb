@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :shapes do
       put :sort, on: :member
+      patch :restore, on: :member
     end
 
     resources :colors do
       put :sort, on: :member
+      patch :restore, on: :member
     end
 
     resources :orders, except: %i[ new create ]

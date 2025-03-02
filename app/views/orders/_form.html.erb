@@ -20,8 +20,8 @@
   <%= f.hidden_field :_destroy %>
     <div class="row" data-controller="price">
       <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', data: { action: 'price#update', 'price-target': 'quantity' }, **no_auto %>
-      <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
-      <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
+      <%= f.collection_select :color_id, Color.without_deleted.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
+      <%= f.collection_select :shape_id, Shape.without_deleted.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
       <div class="col-md-2 align-self-end mb-4 text-end" data-price-target="output" data-subtotal-target="line" data-extended="0">extended price here</div>
     </div>
     <div data-custom-target="field">
@@ -38,8 +38,8 @@
   <%= f.hidden_field :_destroy %>
   <div class="row" data-controller="price">
     <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', data: { action: 'price#update', 'price-target': 'quantity' }, **no_auto %>
-    <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
-    <%= f.collection_select :shape_id, Shape.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
+    <%= f.collection_select :color_id, Color.without_deleted.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
+    <%= f.collection_select :shape_id, Shape.without_deleted.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
     <div class="col-md-2 align-self-end mb-4 text-end" data-price-target="output" data-subtotal-target="line" data-extended="0">extended price here</div>
   </div>
   <div data-custom-target="field">

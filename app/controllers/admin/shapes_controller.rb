@@ -1,7 +1,7 @@
 module Admin
 class ShapesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_shape, only: %i[ show edit update destroy sort ]
+  before_action :set_shape, only: %i[ show edit update destroy sort restore ]
 
   # GET /shapes or /shapes.json
   def index
@@ -50,6 +50,19 @@ class ShapesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /shapes/1 or /shapes/1.json
+  def restore
+    respond_to do |format|
+      if @shape.restore
+        format.html { redirect_to admin_shape_path(@shape) }
+        format.json { render :show, status: :ok, location: @shape }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @shape.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def sort
     @shape.insert_at(params.expect(:position).to_i)
     head :no_content
@@ -60,9 +73,8 @@ class ShapesController < ApplicationController
     @shape.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_shapes_path, status: :see_other }
-      format.json { head :no_content }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(helpers.dom_id(@shape, 'list-item')) }
+      format.html { redirect_to admin_shape_path(@shape) }
+      format.json { render :show, status: :ok, location: @shape }
     end
   end
 

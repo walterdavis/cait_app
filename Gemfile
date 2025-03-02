@@ -67,3 +67,5 @@ gem "kaminari"
 gem "ransack"
 
 gem "money-rails", "~> 1.15"
+
+gem "paranoia", "~> 3.0"

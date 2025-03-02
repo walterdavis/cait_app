@@ -248,6 +248,8 @@ GEM
     nokogiri (1.18.3-x86_64-linux-musl)
       racc (~> 1.4)
     parallel (1.26.3)
+    paranoia (3.0.1)
+      activerecord (>= 6, < 8.1)
     parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
@@ -421,6 +423,7 @@ DEPENDENCIES
   kaminari
   litestream (~> 0.12.0)
   money-rails (~> 1.15)
+  paranoia (~> 3.0)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)

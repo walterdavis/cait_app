@@ -1,7 +1,7 @@
 module Admin
 class ColorsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_color, only: %i[ show edit update destroy sort ]
+  before_action :set_color, only: %i[ show edit update destroy sort restore ]
 
   # GET /colors or /colors.json
   def index
@@ -50,6 +50,18 @@ class ColorsController < ApplicationController
     end
   end
 
+  def restore
+    respond_to do |format|
+      if @color.restore
+        format.html { redirect_to admin_color_path(@color) }
+        format.json { render :show, status: :ok, location: admin_color_path(@color) }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @color.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def sort
     @color.insert_at(params.expect(:position).to_i)
     head :no_content
@@ -60,9 +72,8 @@ class ColorsController < ApplicationController
     @color.destroy!
 
     respond_to do |format|
-      format.html { redirect_to admin_colors_path, status: :see_other }
-      format.json { head :no_content }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(helpers.dom_id(@color, 'list-item')) }
+      format.html { redirect_to admin_color_path(@color) }
+      format.json { render :show, status: :ok, location: admin_color_path(@color) }
     end
   end
 

@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_12_210020) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_011433) do
   create_table "colors", force: :cascade do |t|
     t.string "name"
     t.integer "position", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_colors_on_deleted_at"
   end
 
   create_table "custom_products", force: :cascade do |t|
@@ -56,6 +58,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_210020) do
     t.datetime "updated_at", null: false
     t.boolean "customize", default: false, null: false
     t.integer "price_cents", default: 0, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_shapes_on_deleted_at"
   end
 
   add_foreign_key "custom_products", "colors"
