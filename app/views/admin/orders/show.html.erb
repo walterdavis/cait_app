@@ -11,6 +11,7 @@
         <p>Due: <%= humanized_money_with_symbol(@order.due) %></p>
       </div>
     </div>
+    <%= simple_format @order.notes %>
   </div>
 </div>
 
