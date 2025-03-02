@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_02_014630) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_020808) do
   create_table "colors", force: :cascade do |t|
     t.string "name"
     t.integer "position", default: 0, null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_014630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "paid_cents", default: 0
-    t.string "notes"
+    t.string "notes", limit: 3000
   end
 
   create_table "people", force: :cascade do |t|
