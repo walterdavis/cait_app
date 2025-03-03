@@ -5,7 +5,7 @@
         <%= render @order.person %>
       </div>
       <div class="col-md-6">
-        <p><%= @order.created_at.strftime('%d %b %Y %l:%M %p') %></p>
+        <p><%= @order.created_at.strftime('%-d %b %Y %l:%M %p') %></p>
         <p>Subtotal: <%= humanized_money_with_symbol(@order.subtotal) %></p>
         <p>Deposit: (<%= humanized_money_with_symbol(@order.paid) %>)</p>
         <p>Due: <%= humanized_money_with_symbol(@order.due) %></p>

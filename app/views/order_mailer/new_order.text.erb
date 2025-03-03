@@ -1,0 +1,24 @@
+New Custom Order
+================
+
+Order #<%= @order.id %>
+
+<%= @order.person.name %>
+<%= @order.person.email %>
+<%= phone(@order.person.phone) %>
+<%= 'Pickup' if @order.person.pickup? %>
+<%= @order.person.address unless @order.person.pickup? %>
+
+
+<%= @order.created_at.strftime('%-d %b %Y %l:%M %p') %>
+Subtotal: <%= humanized_money_with_symbol(@order.subtotal) %>
+Deposit: (<%= humanized_money_with_symbol(@order.paid) %>)
+Due: <%= humanized_money_with_symbol(@order.due) %>
+<%= @order.notes %>
+
+<%- @order.custom_products.each do |custom_product| -%>
+<%= custom_product.description %> <%= humanized_money_with_symbol(custom_product.extended_price) %>
+<%= "Custom text: #{custom_product.custom_text}\n" if custom_product.custom_text? -%>
+
+<%- end -%>
+

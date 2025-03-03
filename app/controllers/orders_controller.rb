@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:order_id] = @order.id
+        OrderMailer.new_order(@order).deliver_now
         format.html { redirect_to order_path, notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
