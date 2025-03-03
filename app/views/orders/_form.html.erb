@@ -19,6 +19,7 @@
     </button>
   <%= f.hidden_field :_destroy %>
     <div class="row" data-controller="price">
+      <%= f.hidden_field :id %>
       <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', data: { action: 'price#update', 'price-target': 'quantity' }, **no_auto %>
       <%= f.collection_select :color_id, Color.without_deleted.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
       <%= f.collection_select :shape_id, Shape.without_deleted.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>
@@ -37,6 +38,7 @@
   </button>
   <%= f.hidden_field :_destroy %>
   <div class="row" data-controller="price">
+    <%= f.hidden_field :id %>
     <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', data: { action: 'price#update', 'price-target': 'quantity' }, **no_auto %>
     <%= f.collection_select :color_id, Color.without_deleted.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-4 mb-3' %>
     <%= f.collection_select :shape_id, Shape.without_deleted.order(:position).all, :id, :name, { prompt: true, wrapper_class: 'col-md-4 mb-3' }, data: { action: 'custom#customize price#update', 'price-target': 'shape' } %>

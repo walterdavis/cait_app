@@ -18,7 +18,8 @@
     <button type="button" id="TEMPLATE_RECORD" class="btn-close float-end" data-dismiss="modal" aria-label="Close"
       data-action="click->nested-form#remove_association">
     </button>
-  <%= f.hidden_field :_destroy %>
+    <%= f.hidden_field :_destroy %>
+    <%= f.hidden_field :id %>
     <div class="row">
       <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', **no_auto %>
       <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-5 mb-3' %>
@@ -36,6 +37,7 @@
     data-action="click->nested-form#remove_association">
   </button>
   <%= f.hidden_field :_destroy %>
+  <%= f.hidden_field :id %>
   <div class="row">
     <%= f.number_field :quantity, step: 1, wrapper_class: 'col-md-2 mb-3', **no_auto %>
     <%= f.collection_select :color_id, Color.order(:position).all, :id, :name, prompt: true, wrapper_class: 'col-md-5 mb-3' %>
