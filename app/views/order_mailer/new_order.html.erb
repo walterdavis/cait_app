@@ -3,8 +3,8 @@
 <p>Order #<%= @order.id %></p>
 <%= render @order.person %>
 <p><%= @order.created_at.strftime('%-d %b %Y %l:%M %p') %></p>
+<%= render @order.custom_products %>
 <p>Subtotal: <%= humanized_money_with_symbol(@order.subtotal) %></p>
 <p>Deposit: (<%= humanized_money_with_symbol(@order.paid) %>)</p>
 <p>Due: <%= humanized_money_with_symbol(@order.due) %></p>
 <%= simple_format @order.notes %>
-<%= render @order.custom_products %>
