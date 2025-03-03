@@ -9,7 +9,7 @@ export default class extends Controller {
 
   add_association(event) {
     event.preventDefault();
-    const id = `nf_${new Date().valueOf()}`;
+    const id = new Date().valueOf();
     var content = this.templateTarget.innerHTML.replace(/TEMPLATE_RECORD/g, id);
     this.add_itemTarget.insertAdjacentHTML('beforebegin', content);
     this.add_itemTarget.scrollIntoView();
