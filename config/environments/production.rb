@@ -87,15 +87,16 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  ActionMailer::Base.smtp_settings = {
-    user_name: 'apikey',
-    password: Rails.application.credentials.api_key,
-    domain: 'cait-app.fly.dev',
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  config.action_mailer.delivery_method = :mailtrap
+  # ActionMailer::Base.smtp_settings = {
+  #   user_name: 'apikey',
+  #   password: Rails.application.credentials.api_key,
+  #   domain: 'cait-app.fly.dev',
+  #   address: 'smtp.sendgrid.net',
+  #   port: 587,
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
+  # }
   config.action_mailer.default_url_options = {
     :host => 'cait-app.fly.dev'
   }

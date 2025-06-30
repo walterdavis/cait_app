@@ -207,6 +207,7 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mailtrap (2.3.0)
     marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
@@ -422,6 +423,7 @@ DEPENDENCIES
   jsbundling-rails
   kaminari
   litestream (~> 0.12.0)
+  mailtrap
   money-rails (~> 1.15)
   paranoia (~> 3.0)
   propshaft
